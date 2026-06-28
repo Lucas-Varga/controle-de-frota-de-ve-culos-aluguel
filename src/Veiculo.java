@@ -38,6 +38,7 @@ public abstract class Veiculo {
 
     public double calcularAluguel(int dias) {
        double valor = this.valorPorDia * dias;
+       System.out.println("Valor total do aluguel: " + valor);
        return valor;
     }
 
