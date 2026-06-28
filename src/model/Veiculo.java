@@ -1,16 +1,19 @@
+package model;
+
+import service.CalculoAluguel;
+
 public abstract class Veiculo {
 
     private String modelo;
     private String placa;
-    private double valorPorDia;
 
-    public Veiculo(String modelo, String placa, double valorPorDia) {
+    private CalculoAluguel calculoAluguel;
+
+    public Veiculo(String modelo, String placa, CalculoAluguel calculoAluguel) {
         this.modelo = modelo;
         this.placa = placa;
-        this.valorPorDia = valorPorDia;
+        this.calculoAluguel = calculoAluguel;
     }
-
-
 
     public String getModelo() {
         return modelo;
@@ -28,23 +31,20 @@ public abstract class Veiculo {
         this.placa = placa;
     }
 
-    public double getValorPorDia() {
-        return valorPorDia;
+    public void setCalculoAluguel(CalculoAluguel calculoAluguel) {
+        this.calculoAluguel = calculoAluguel;
     }
 
-    public void setValorPorDia(double valorPorDia) {
-        this.valorPorDia = valorPorDia;
+    public CalculoAluguel getCalculoAluguel() {
+        return calculoAluguel;
     }
 
     public double calcularAluguel(int dias) {
-       double valor = this.valorPorDia * dias;
-       System.out.println("Valor total do aluguel: " + valor);
-       return valor;
+      return calculoAluguel.calcular(dias);
     }
 
     public void exibirDetalhes() {
         System.out.println("Modelo: " + this.modelo + " - " + " Placa: " + this.placa);
     }
-
 
 }
